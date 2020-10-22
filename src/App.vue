@@ -125,8 +125,7 @@
           <b-button 
             id="eliminar-usuarios" 
             variant="danger" 
-            @click="eliminarUsuariosMarcados"
-            :disabled="true && !estanTodosMarcados"
+            @click="eliminarSeleccionados"
             >
             Eliminar
           </b-button>
@@ -169,7 +168,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['ponerNuevoUsuario', 'ponerEnListaParaEliminar']),
+    ...mapActions(['ponerNuevoUsuario', 'ponerEnListaAEliminar', 'eliminarSeleccionados']),
     alternarSeleccionarTodos(checked) {
       // console.log(checked);
       if (checked) this.$refs.tablaUsuarios.selectAllRows();
@@ -200,11 +199,11 @@ export default {
         this.estadoIndeterminado = true;
         this.estanTodosMarcados = false;
       }
-      this.ponerEnListaPorEliminar(usuariosAEliminar);
+      this.ponerEnListaAEliminar(usuariosAEliminar);
     },
   },
   computed: {
-    ...mapGetters(['usuarios']),
+    ...mapGetters(['usuarios', 'listaAEliminar']),
     usuariosFiltrados(){
       return this.usuarios
     },
