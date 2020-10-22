@@ -2,9 +2,9 @@ export default {
     colocarNuevoUsuario(state, usuario){
         state.usuarios.push(usuario);
     },
-    eliminarUsuario(state, id){
+    removerSeleccionados(state){
         state.usuarios = state.usuarios.filter(
-            usuario => usuario.id != id
+            usuario => !state.listaAEliminar.includes(usuario)
         );
     },
     colocarListaAEliminar(state, lista){

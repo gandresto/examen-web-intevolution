@@ -5,7 +5,10 @@ export default {
         usuario.id = uuidv4();
         commit('colocarNuevoUsuario', usuario);
     },
-    ponerListaAEliminar({commit}, lista){
+    ponerEnListaAEliminar({commit}, lista){
         commit('colocarListaAEliminar', lista)
+    },
+    eliminarSeleccionados({commit}){
+        commit('removerSeleccionados')
     }
 }
